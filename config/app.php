@@ -144,6 +144,16 @@ return [
         CodeProject\Providers\EventServiceProvider::class,
         CodeProject\Providers\RouteServiceProvider::class,
 
+        /**
+         * Add pacote Prettus Repository - padrão repository.
+         */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+
+        /**
+         * Add Content depence injection, ao invés de chamar a interface vai chamar a class eloquent
+         */
+        CodeProject\Providers\CodeProjectRepositoryProvider::class,
+
     ],
 
     /*
