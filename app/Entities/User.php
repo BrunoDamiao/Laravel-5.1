@@ -32,4 +32,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+
+    ## User criando relação com a tabela Project ##
+    public function Project()
+    {
+        ## Relação de um pra muitos; Post 1 <-> * Project ##
+        return $this->hasMany('CodeProject\Entities\Project');
+    }
 }

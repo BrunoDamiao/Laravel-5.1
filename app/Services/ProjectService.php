@@ -89,7 +89,8 @@ class ProjectService
 	{
 		try {
 			
-			return $this->repository->find($id);
+			// return $this->repository->find($id);
+			return $this->repository->with(['client','user'])->find($id);
 
 		} catch (Exception $e) {
 			

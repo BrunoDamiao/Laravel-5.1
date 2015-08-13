@@ -15,7 +15,7 @@ class Client extends Model
     	'obs' 
     ];
 
-    ## Post criando relação com a tabela Project ##
+    ## Client criando relação com a tabela Project ##
     public function Project()
     {
     	## Relação de um pra muitos; Post 1 <-> * Project ##

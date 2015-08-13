@@ -16,10 +16,17 @@ class Project extends Model
     	'due_date'
     ];
 
-    ## Post criando relação com a tabela client ##
+    ## Project criando relação com a tabela Client ##
     public function Client()
     {
     	## belongsTo: indica que o Project pertence a um Client ##
         return $this->belongsTo('CodeProject\Entities\Client');
+    }
+
+    ## Project criando relação com a tabela User ##
+    public function User()
+    {
+        ## belongsTo: indica que o Project pertence a um User ##
+        return $this->belongsTo('CodeProject\Entities\User');
     }
 }
