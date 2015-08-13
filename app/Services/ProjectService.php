@@ -2,25 +2,25 @@
 
 namespace CodeProject\Services;
 
-use CodeProject\Repositories\ClientRepository;
+use CodeProject\Repositories\ProjectRepository;
 
-use CodeProject\Validators\ClientValidator;
+use CodeProject\Validators\ProjectValidator;
 
 use \Prettus\Validator\Exceptions\ValidatorException;
 
-class ClientService 
+class ProjectService 
 {
 
 	/**
-	 * @var ClientRepository
+	 * @var ProjectRepository
 	 */
 	protected $repository;
 	/**
-	 * @var ClientValidator
+	 * @var ProjectValidator
 	 */
 	protected $validator;
 	
-	public function __construct (ClientRepository $repository, ClientValidator $validator)
+	public function __construct (ProjectRepository $repository, ProjectValidator $validator)
 	{
 		$this->repository = $repository;
 		$this->validator  = $validator;
@@ -31,7 +31,11 @@ class ClientService
 		try {
 			
 			$this->validator->with($data)->passesOrFail();
-			return $this->repository->create($data);
+			$p = $this->repository->create($data);
+
+			if ($p) {
+				return "Projeto criado com sucesso!";
+			}
 
 		} catch (ValidatorException $e) {
 			
@@ -49,7 +53,11 @@ class ClientService
 
 			$this->validator->with($data)->passesOrFail();
 
-			return $this->repository->find($id)->update($data);
+			$P = $this->repository->find($id)->update($data);
+			
+			if($P){
+				return "O projeto '".$data['name']."', foi editado com sucesso!";
+			}
 
 		} catch (ValidatorException $e) {
 			

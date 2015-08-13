@@ -2,22 +2,28 @@
 
 namespace CodeProject\Http\Controllers;
 
-use CodeProject\Repositories\ClientRepository;
-use CodeProject\Services\ClientService;
 use Illuminate\Http\Request;
+use CodeProject\Repositories\ProjectRepository;
+use CodeProject\Services\ProjectService;
 
-class ClientController extends Controller
+// use CodeProject\Entities\Project;
+// use CodeProject\Http\Requests;
+// use CodeProject\Http\Controllers\Controller;
+
+
+
+class ProjectController extends Controller
 {
     /**
-     * @var ClientRepository
+     * @var ProjectRepository
      */
     private $repository;
     /**
-     * @var ClientService
+     * @var ProjectService
      */
     private $service;
 
-    public function __construct (ClientRepository $repository, ClientService $service)
+    public function __construct (ProjectRepository $repository, ProjectService $service)
     {
         $this->repository = $repository;
         $this->service = $service;
@@ -30,7 +36,6 @@ class ClientController extends Controller
      */
     public function index()
     {
-        // return $this->repository->all();
         return $this->service->all();
     }
 
@@ -43,7 +48,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->create($request->all());
+        $this->service->create($request->all());
     }
 
     /**
@@ -54,7 +59,6 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        // return $this->repository->find($id);
         return $this->service->show($id);
     }
 
@@ -78,9 +82,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $c = $this->repository->find($id)->delete();
-
-        if ($c) {
+        $p = $this->repository->find($id)->delete();
+        
+        if ($p) {
             return "O projeto {$id} foi deletado com sucesso!";
         }
     }

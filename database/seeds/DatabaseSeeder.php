@@ -14,8 +14,18 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
+        /*factory('CodeProject\Entities\User')->create(
+            [
+                'name' => 'Bruno',
+                'email' => 'br2005@oi.com.br',
+                'password' => bcrypt(123456),
+                'remember_token' => str_random(10)
+            ]
+        );*/
+
         // $this->call(UserTableSeeder::class);
         $this->call(ClientTableSeeder::class);
+        // $this->call(ProjectTableSeeder::class);
 
         Model::reguard();
     }
