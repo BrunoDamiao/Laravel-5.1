@@ -13,11 +13,17 @@
 
 $factory->define(CodeProject\Entities\User::class, function ($faker) {
     return [
+        'name' => 'Bruno Damião',
+        'email' => 'br2005@oi.com.br',
+        'password' => bcrypt(123456),
+        'remember_token' => str_random(10)
+    ];
+    /*return [
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => str_random(10),
         'remember_token' => str_random(10),
-    ];
+    ];*/
 });
 
 
@@ -35,6 +41,8 @@ $factory->define(CodeProject\Entities\Client::class, function ($faker) {
 
 $factory->define(CodeProject\Entities\Project::class, function ($faker) {
     return [
+        'owner_id' => '1',
+        'client_id' => '1',
         'name' => $faker->name,
         'description' => $faker->sentence,
         'progress' => $faker->randomDigit,

@@ -23,9 +23,15 @@ class DatabaseSeeder extends Seeder
             ]
         );*/
 
+        DB::statement('SET foreign_key_checks = 0');
+
+        factory(\CodeProject\Entities\User::class)->create();
+
         // $this->call(UserTableSeeder::class);
         $this->call(ClientTableSeeder::class);
-        // $this->call(ProjectTableSeeder::class);
+        $this->call(ProjectTableSeeder::class);
+
+        DB::statement('SET foreign_key_checks = 1');
 
         Model::reguard();
     }
