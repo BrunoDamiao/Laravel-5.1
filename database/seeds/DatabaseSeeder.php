@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
 
         DB::statement('SET foreign_key_checks = 0');
 
+        \CodeProject\Entities\User::truncate();
         factory(\CodeProject\Entities\User::class)->create();
 
         // $this->call(UserTableSeeder::class);
