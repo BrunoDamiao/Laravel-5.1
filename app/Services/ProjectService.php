@@ -56,7 +56,11 @@ class ProjectService
 			$P = $this->repository->find($id)->update($data);
 			
 			if($P){
-				return "O projeto '".$data['name']."', foi editado com sucesso!";
+				// return "O projeto '".$data['name']."', foi editado com sucesso!";
+				return [
+					'error' => false, 
+					'message' =>"O projeto '".$data['name']."', foi editado com sucesso!" 
+				];
 			}
 
 		} catch (ValidatorException $e) {

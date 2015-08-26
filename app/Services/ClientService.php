@@ -49,7 +49,15 @@ class ClientService
 
 			$this->validator->with($data)->passesOrFail();
 
-			return $this->repository->find($id)->update($data);
+			$C = $this->repository->find($id)->update($data);
+
+			if($C){
+				// return "O projeto '".$data['name']."', foi editado com sucesso!";
+				return [
+					'error' => false, 
+					'message' =>"O cliente '".$data['name']."', foi editado com sucesso!" 
+				];
+			}
 
 		} catch (ValidatorException $e) {
 			
