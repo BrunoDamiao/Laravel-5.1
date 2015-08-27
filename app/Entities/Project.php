@@ -24,7 +24,7 @@ class Project extends Model
     }
 
     ## Project criando relação com a tabela User ##
-    public function User()
+    public function Owner()
     {
         ## belongsTo: indica que o Project pertence a um User ##
         return $this->belongsTo('CodeProject\Entities\User');

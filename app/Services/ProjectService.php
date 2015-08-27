@@ -77,7 +77,8 @@ class ProjectService
 	{
 		try {
 			
-			return $this->repository->all();
+			// return $this->repository->all();
+			return $this->repository->with(['owner', 'client'])->all();
 
 		} catch (Exception $e) {
 			
@@ -94,7 +95,8 @@ class ProjectService
 		try {
 			
 			// return $this->repository->find($id);
-			return $this->repository->with(['client','user'])->find($id);
+			// return $this->repository->with(['owner', 'client'])->find($id);
+			return $this->repository->with(['owner', 'client'])->find($id);
 
 		} catch (Exception $e) {
 			
